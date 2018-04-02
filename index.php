@@ -6,3 +6,4 @@ define('VIEW' , './view');
 include './system/laysen.php';
 $laysen = new \laysen\main;
 $laysen->run();
+echo "string";
