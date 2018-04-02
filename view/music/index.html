@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐总有新玩法</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+    <meta name="viewport" content="width=640,user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="<?=$plug?>css/laysen.css">
+    <link rel="stylesheet" href="<?=$static?>css/music.css">
+    <script type="text/javascript" src="<?=$plug?>js/vue.min.js"></script>
+    <script type="text/javascript" src="<?=$plug?>js/laysen.js"></script>
+    <script type="text/javascript" src="<?=$static?>js/music.js?v=2.1"></script>
+</head>
+<body>
+	<main id="app" v-cloak>
+		<header class="m_header" id="m_header" v-show="navShow">
+			<a href="javascript:;"  v-for="(v,i) in nav" :class="{on:active==i}" @click="tabs(i)">{{v}}</a>
+		</header>
+		<div class="m_main" v-show="active==0">
+			<div class="m_banner">
+				<img src="<?=$static?>images/banner.jpg" alt="">
+			</div>
+			<h3 class="m_box_h3">推荐歌单</h3>
+			<ul class="m_box_tj">
+				<li v-for="v in recData">
+					<a @click="musicFind(v.id)">
+						<div class="m_box_bg" v-bind:style="{backgroundImage: 'url('+v.cover+')'}"></div>
+						<span>{{v.title}}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="m_main" v-show="active==1">
+			<ul class="m_box_gs" v-show="catesShow">
+				<li v-for="v in cateDate" @click="cate_tab(v.id,v.name)">
+					<p>{{v.name}}</p>
+					<span class="yjt right_arrow"></span>
+				</li>
+			</ul>
+			<div v-show="singerShow">
+				<div class="m_box_gsBack" @click="singer_back">{{catesName}}</div>
+				<ul class="m_box_gsList">
+					<li v-for="v in singerDate" @click="song_tab(v.id , v.name)">
+						<div class="m_box_bg" v-bind:style="{backgroundImage: 'url('+v.cover+')'}"></div>
+						<span>{{v.name}}</span>
+					</li>
+				</ul>
+			</div>
+			<div v-show="songShow">
+				<div class="m_box_gsBack" @click="song_back">{{singName}}</div>
+				<ul class="m_box_gsList">
+					<li v-for="v in songDate">
+						<a @click="musicFind(v.id)">
+							<div class="m_box_bg" v-bind:style="{backgroundImage: 'url('+v.cover+')'}"></div>
+							<span>{{v.title}}</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="m_main" v-show="active==2">
+			<div class="m_search">
+				<div class="m_search_form">
+					<input type="text" class="m_search_text" placeholder="请输入歌曲" v-model="word">
+					<span class="m_search_png"></span>
+					<span class="close m_search_close" @click="search_close"></span>
+					<a href="javascript:;" class="m_search_submit" @click="search">搜索</a>
+				</div>
+				<ul class="m_box_gsList">
+					<li v-for="v in searchDate">
+						<a @click="musicFind(v.id)">
+							<div class="m_box_bg" v-bind:style="{backgroundImage: 'url('+v.cover+')'}"></div>
+							<span>{{v.title}}</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="h100"></div>
+		<footer class="m_footer">
+			<div class="m_footer_box">
+				<div class="m_footer_left" @click="musicDetail">
+					<div id="m_footer_cover" class="m_footer_cover" v-bind:style="{backgroundImage: 'url('+musicCover+')'}"></div>
+					<div class="m_footer_ns">
+						<p id="music_author">{{musicAuthor}}</p>
+						<p id="music_title">{{musicName}}</p>
+					</div>
+				</div>
+				<div class="m_footer_fk" >
+					<img src="<?=$static?>images/lt.png" @click="musicFind(prev_id)">
+					<div :class="{m_footer_play:true,on:musicPause}" @click="playMusic"></div>
+					<img src="<?=$static?>images/rt.png" @click="musicFind(next_id)">
+				</div>
+			</div>
+			<div class="m_pmbg">
+				<div class="m_pmbg_ff"></div>
+			</div>
+		</footer>
+	</main>
+	<div class="m_blur" id="m_blur">
+		<div class="m_mdf" id="m_mdf">
+			<a href="javascript:;">
+				<div class="m_mdf_lp zjt"></div>
+				<div class="m_mdf_tex" id="m_music_name"></div>
+			</a>
+		</div>
+				
+		<div class="m_lka">
+			<div class="m_img_bg" id="m_img"></div>
+		</div>
+
+		<div class="progress">
+			<div class="progress_wap" id="progress_wap">
+				<div class="progress_box" id="progress_box">
+					<div class="progress_touch" id="progress_touch"></div>
+				</div>
+			</div>
+			<div class="progress_text" >
+				<p id="progress_text1">00:00</p>
+				<p id="progress_text2">00:00</p>
+			</div>
+		</div>
+	</div>
+	<audio src="" id="audio"></audio>
+</body>
+</html>

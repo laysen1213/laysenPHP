@@ -1,0 +1,57 @@
+<?=$this->display('index/header')?>
+<main class="main_list">
+	<div class="list_left">
+		<div class="list_left_top">
+			<div class="list_left_tj">
+				<span>最新动态：</span>
+				<a href="">做最好的自己</a>
+			</div>
+			<div class="list_left_tjPage">
+				<a href="javascript:;" class="prev"></a>
+				<a href="javascript:;" class="next"></a>
+			</div>
+		</div>
+		<div class="list_left_nav">
+			<h3 class="fl">HOT/最新</h3>
+			<!-- <div class="list_left_navLt fr">
+				<a href="" class="on">热门</a>
+				<a href="">人物</a>
+				<a href="">技术分析</a>
+			</div> -->
+		</div>
+		<div class="list_left_main">
+			<ul>
+				<?php foreach($data as $k => $v){ ?>
+				<li>
+					<a href="<?=U('index/detail').'?id='.$v['id']?>">
+						<img src="<?=$v['cover']?>" alt="">
+					</a>
+					<div class="list_left_mF">
+						<h3>
+							<a href="<?=U('index/detail').'?id='.$v['id']?>" title="<?=$v['title']?>"><?=$v['title']?></a>
+						</h3>
+						<div class="list_left_mC"><?=$v['intro']?></div>
+						<div class="list_left_mA">
+							<span><?=$v['ctime']?></span>
+							<div class="list_left_mlook">[<?=$v['cid']?>]</div>
+						</div>
+					</div>
+				</li>
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+	<div class="list_right">
+		<h3>推荐阅读</h3>
+		<ul class="list_right_ul">
+			<?php foreach($tj_list as $k => $v){ ?>
+			<li>
+				<i></i>
+				<a href="<?=U('index/detail').'?id='.$v['id']?>" title="<?=$v['title']?>"><?=$v['title']?></a>
+				<p><?=$v['ctime']?></p>
+			</li>
+			<?php } ?>
+		</ul>
+	</div>
+</main>
+<?=$this->display('index/footer')?>
