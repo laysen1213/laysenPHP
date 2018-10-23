@@ -1,0 +1,159 @@
+<include file="item:header"/>
+<div class="w_content">
+	<div class="w_confirm_top">选择收货地址</div>
+	<ul class="w_confirm_address" data-url="{:U('Ajax/address')}">
+		<volist name="address_list" id="val">
+		<li <if condition="$val['status'] eq 1">class="w_confirm_cs" </if>
+		data-id="{$val['id']}">
+			<if condition="$val['status'] eq 1">
+			<span class="w_confirm_ready">默认地址</span>
+			<else/>
+			<a href="{:U('member/status_address',array('id'=>$val['id']))}" class="w_confirm_ready w_confirm_cz">设为默认</a>
+			</if>
+			<h3>{$val['label']} <font>( {$val['name']}收 )</font></h3>
+			<div class="w_confirm_hd">
+				<p>{$val['address']}</p>
+				<p>{$val['phone']}</p> 
+			 </div>
+			<div class="w_confirm_kz">
+				<a href="javascript:;" class="xzdz_btn" data-id="{$val['id']}">修改</a>
+				<if condition="$val['status'] neq 1">
+				<a href="{:U('member/del_address',array('id'=>$val['id']))}" class="w_confrim_del" data-id="{$val['id']}" onclick="return confirm('确认是否删除？')">删除</a>
+				</if>
+			</div>
+		</li>
+		</volist>
+	</ul>
+	<!-- <div class="w_confirm_bth">使用新地址</div>
+	<table cellspacing="0" cellpadding="0" class="w_form_table">
+		<form action="{:U('member/address')}" method="post">
+			<tr>
+				<td>地址标注：</td>
+				<td>
+					<input type="text" name="label">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>收货人：</td>
+				<td>
+					<input type="text" name="name">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>电话：</td>
+				<td>
+					<input type="text" name="phone">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>城市选择：</td>
+				<td>
+				<select><option value="">请选择</option></select>
+				</td>
+			</tr>
+			<tr>
+				<td>收货地址：</td>
+				<td class="w_user_table_long">
+					<input type="text" name="address">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr class="w_user_table_submit">
+				<td></td>
+				<td colspan="2"><input type="submit" value="提交"></td>
+			</tr>
+		</form>			
+	</table> -->
+	<div class="height"></div>
+	<div class="w_car_content">
+		<!-- 订单详情 -->
+		<ul class="w_car_top">
+			<li class="w_car_li_one">
+				<input type="checkbox" checked="checked" class="w_checkall" >
+			</li>
+			<li class="w_car_li_two">礼品图片</li>
+			<li class="w_car_li_three">礼品名称</li>
+			<li class="w_car_li_four">积分</li>
+			<li class="w_car_li_five">数量</li>
+			<li class="w_car_li_six">总积分</li>
+			<li class="w_car_li_seven">操作</li>
+		</ul>
+		<volist name="list" id="val">
+		<ul class="w_car_mid" id="car_{$val['id']}">
+			<li class="w_car_li_one">
+				<input type="checkbox" checked="checked" name="sumb[]" value="{$val['id']}">
+			</li>
+			<li class="w_car_li_two">
+				<a href="{:U('item/content',array('id'=>$val['jid']))}">
+					<img src="/uploads/{$val['img']}">
+				</a>
+			</li>
+			<li class="w_car_li_three">
+				<a href="{:U('item/content',array('id'=>$val['jid']))}">
+				{$val['title']}
+				</a>
+			</li>
+			<li class="w_car_li_four">￥{$val['price']}</li>
+			<li class="w_car_li_five" style="height: 100px;padding: 0px 27px;">
+				{$val['nums']}
+			</li>
+			<li class="w_car_li_six">￥{$val['price']*$val['nums']}</li>
+			<li class="w_car_li_seven">
+				<a href="javascript:;" class="car_del" data-id="{$val['id']}">删除</a>
+			</li>
+		</ul>
+		</volist>
+	</div>
+	<div class="w_confirm_bgz">
+		<form action="{:U('confirm')}" method="post">
+		<div class="w_confirm_message">
+			订单留言：<input type="text" name="message">
+		</div>
+		<div class="w_confrim_clh">
+			<h3 class="w_confirm_hz">实付款：<font>￥{$total.price}</font></h3>
+			
+			<input class="w_confirm_submit" type="submit" value="提交订单">
+			<input type="hidden" name="aid" id="address_id" value="{$address_list.0.id}">
+			<input type="hidden" name="totalprice" id="totalprice" value="{$total.price}">
+			<input type="hidden" name="nums" value="{$total.number}">
+		</div>
+		</form>
+	</div>
+</div>
+
+<div class="w_address_tk">
+	<h5 class="tuodong"><span>收货信息</span><i class="address_tk_hide">X</i></h5>
+	<form action="{:U('Member/update_address')}" method="post" id="w_address_form">
+	<input type="hidden" name="id">
+    <dl>
+    	<dd><span><i>*</i>地址标注：</span>
+    		<input type="text" name="label" class="w_form_label">
+			<div class="w_formts_label w_formts"></div>
+    	</dd>
+    	<dd><span><i>*</i>收货人：</span>
+    		<input type="text" name="name" class="w_form_shperson">
+    		<div class="w_formts_shperson w_formts"></div>
+    	</dd>
+        <dd><span><i>*</i>电话：</span>
+        	<input type="text" name="phone" class="w_form_phone">
+        	<div class="w_formts_phone w_formts"></div>
+        </dd>
+        <dd class="w_input_v"><span><i>*</i>收货地址：</span>
+        	<input type="text" name="address" class="w_form_address">
+        	<div class="w_formts_address w_formts"></div>
+        </dd>
+        <!-- <dd><span><i>*</i>详细地址：</span><input></dd> -->
+        <div class="address_tk_btn">
+        	<input type="button" value="保存收货地址" id="w_address_submit">
+        </div>
+    </dl>
+    </form>
+</div>
+<div class="w_black"></div>
+
+<include file="item:footer"/>	 
+</body>
+</html>

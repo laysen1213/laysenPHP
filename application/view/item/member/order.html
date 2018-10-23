@@ -1,0 +1,102 @@
+<include file="item:header"/>
+<div class="w_content">
+	<div class="w_content_vz">
+		<div class="w_content_vzt">
+			<if condition="$res['status'] eq 1">
+			<h3>你已经成功提交订单，请尽快支付！</h3>
+			<else/>
+			<h3>订单状态：{$res['status']|OrderStatus=###}
+			<a href="{:U('Member/myorder')}">返回订单</a>
+			</h3>
+			</if>
+			<!-- <p>注意事项：“成功提交订单”仅表明我们收到了您的订单，只有您的订单成功支付并通过审核后，才代表订单正式生效；</p> -->
+		</div>
+		<div class="w_content_vhj">
+			<div class="w_contetn_hg">
+				<h4>你的订单号：</h4><span>{$res['trading']}</span>
+			</div>
+			<div class="w_contetn_hg">
+				<h4>积分：</h4><span>￥{$res['totalprice']}</span>
+			</div>
+			<div class="w_contetn_hg">
+				<h4>下单时间：</h4><span>{$res['addtime']|date='Y-m-d H:i',###}</span>
+			</div>
+			<div class="w_contetn_hg">
+				<h4>留言：</h4><span>{$res['message']}</span>
+			</div>
+			<!-- <div class="w_contetn_hg">
+				<h4>快递选择：</h4><span>申通快递</span>
+			</div> -->
+			<div class="w_contetn_hg">
+				<h4>收货人姓名：</h4><span>{$address_res['name']}</span>
+			</div>
+			<div class="w_contetn_hg">
+				<h4>收货人电话：</h4><span>{$address_res['phone']}</span>
+			</div>
+			<div class="w_contetn_hg">
+				<h4>收货人地址：</h4><span>{$address_res['address']}</span>
+			</div>
+			<if condition="$res['status'] neq 1">
+			<div class="w_contetn_hg">
+				<h4>方式：</h4><span>{$res['paytype']|PayType=###}</span>
+			</div>
+			</if>
+			<div class="w_car_content" id="w_content_list">
+				<!-- 订单详情 -->
+				<ul class="w_car_top">
+					<li class="w_car_li_two">礼品图片</li>
+					<li class="w_car_li_three">礼品名称</li>
+					<li class="w_car_li_four">积分</li>
+					<li class="w_car_li_five">数量</li>
+					<li class="w_car_li_six">总积分</li>
+				</ul>
+				<volist name="list" id="val">
+				<ul class="w_car_mid" id="car_{$val['id']}">
+					<li class="w_car_li_two">
+						<a href="{:U('item/content',array('id'=>$val['jid']))}">
+							<img src="/uploads/{$val['img']}">
+						</a>
+					</li>
+					<li class="w_car_li_three">
+						<a href="{:U('item/content',array('id'=>$val['jid']))}">
+						{$val['title']}
+						</a>
+					</li>
+					<li class="w_car_li_four">￥{$val['price']}</li>
+					<li class="w_car_li_five" style="height: 100px;padding: 0px 27px;">
+						{$val['nums']}
+					</li>
+					<li class="w_car_li_six">￥{$val['price']*$val['nums']}</li>
+				</ul>
+				</volist>
+			</div>
+			<if condition="$res['status'] eq 1">
+			<div class="w_content_payto">
+				<!-- <div class="w_contetn_hg">
+					<h4>支付方式：</h4><span>
+					<a href="">【更改支付方式】</a></span>
+				</div> -->
+				<div class="w_contetn_hg">
+					<h4>当前积分：</h4><span>￥{$myMoney}</span>
+				</div>
+				<div class="w_contetn_hg">
+					<form action="{:U('orderPay')}" method="post">
+						<input type="hidden" name="id" value="{$id}">
+						<input type="hidden" name="trading" value="{$res['trading']}">
+						<label for="password">
+							请输入密码：<input type="password" name="password" id="password">
+						</label>
+						<input type="submit" value="提交">
+					</form>
+				</div>
+			</div>
+			</if>
+			<div class="w_content_look">
+				<h4>温馨提示：</h4>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="item:footer"/>
+</body>
+</html>

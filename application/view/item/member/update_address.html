@@ -1,0 +1,54 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<table cellspacing="0" cellpadding="0" class="w_form_table">
+		<form action="{:U('update_address')}" method="post">
+		<input type="hidden" name="id" value="{$res['id']}">
+			<tr>
+				<td>地址标注：</td>
+				<td>
+					<input type="text" name="label" value="{$res['label']}">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>收货人：</td>
+				<td>
+					<input type="text" name="name" value="{$res['name']}">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>电话：</td>
+				<td>
+					<input type="text" name="phone" value="{$res['phone']}">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>城市选择：</td>
+				<td>
+				<select><option value="">请选择</option></select>
+				</td>
+			</tr>
+			<tr>
+				<td>收货地址：</td>
+				<td class="w_user_table_long">
+					<input type="text" name="address" value="{$res['address']}">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr class="w_user_table_submit">
+				<td></td>
+				<td colspan="2"><input type="submit" value="提交"></td>
+			</tr>
+		</form>			
+		</table>
+	</div>
+</div>
+
+<include file="item:footer"/>	
+</body>
+</html>

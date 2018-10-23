@@ -1,0 +1,31 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<h3>我的积分：{$rs.integral}</h3>
+		<form action="{:U('integralCash')}" method="post">
+			<input type="text" name="integral">
+			<input type="submit" value="提现">
+		</form>
+		<!-- 收货地址设置 -->
+		<table cellspacing="0" cellpadding="0" class="w_user_table">
+			<tr class="w_user_table_top">
+				<th>积分记录</th>
+				<th>时间</th>
+				<th>备注</th>
+			</tr>
+			<volist name="list" id="val">
+			<tr>
+				<td>{$val.integral}</td>
+				<td>{$val.addtime|date='Y-m-d',###}</td>
+				<td>{$type[$val['type']]}</td>
+			</tr>				
+			</volist>	
+		</table>	
+		<div id="page">{$page}</div>		
+	</div>
+</div>
+<include file="item:footer"/>	
+</body>
+</html>

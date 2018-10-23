@@ -1,0 +1,100 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<div class="w_screen">
+			<a href="{:U('myorder')}" 
+			<if condition="$status eq ''">class="w_active"</if>>全部</a>
+
+			<a href="{:U('myorder',array('status'=>1))}" 
+			<if condition="$status eq 1">class="w_active"</if>>未支付</a>
+
+			<a href="{:U('myorder',array('status'=>2))}" 
+			<if condition="$status eq 2">class="w_active"</if>>已支付</a>
+
+			<a href="{:U('myorder',array('status'=>3))}" 
+			<if condition="$status eq 3">class="w_active"</if>>已发货</a>
+
+			<a href="{:U('myorder',array('status'=>4))}" 
+			<if condition="$status eq 4">class="w_active"</if>>已收货</a>
+
+			<a href="{:U('myorder',array('status'=>5))}" 
+			<if condition="$status eq 5">class="w_active"</if>>已评论</a>
+
+			<a href="{:U('myorder',array('status'=>6))}" 
+			<if condition="$status eq 6">class="w_active"</if>>已取消</a>
+		</div>
+		<div class="w_order">
+			<div class="w_order_top1 w_order_top">礼品图片</div>
+			<div class="w_order_top2 w_order_top">礼品名称</div>
+			<div class="w_order_top3 w_order_top">礼品单价</div>
+			<div class="w_order_top4 w_order_top">数量</div>
+			<div class="w_order_top5 w_order_top">积分</div>
+			<div class="w_order_top6 w_order_top">状态</div>
+			<div class="w_order_top7 w_order_top">操作</div>
+		</div>
+		<!-- 订单列表 -->
+		<volist name="list" id="val">
+		<ul class="w_order_ul">
+			<li class="w_order_li">
+				<volist name="val['order_list']" id="sts">
+				<div class="w_order_toplist">
+					<div class="w_order_top1 w_order_l">
+						<a href="{:U('item/content',array('id'=>$sts['jid'],'oid'=>$sts['oid']))}">
+						<img src="/uploads{$sts['img']}" width="90" height="70">
+						</a>
+					</div>
+					<div class="w_order_top2 w_order_l">
+						<a href="{:U('item/content',array('id'=>$sts['jid'],'oid'=>$sts['oid']))}">
+						{$sts['title']}
+						</a>
+					</div>
+					<div class="w_order_top3 w_order_l">
+						{$sts['price']}
+					</div>
+				</div>
+				</volist>
+			</li>			
+			<li class="w_order_top4 w_order_li2">{$val['nums']}</li>
+			<li class="w_order_top5 w_order_li2">{$val['totalprice']}</li>
+			<li class="w_order_top6 w_order_li2">{$val['status']|OrderStatus=###}</li>
+			<li class="w_order_top7 w_order_li2">
+				<if condition="$val['status'] eq 1">
+
+				<a href="{:U('Item/ordercancle',array('id'=>$val['id']))}"
+				onclick="return confirm('确认取消？');">取消</a>
+
+				<elseif condition="$val['status'] eq 3"/>
+
+				<a href="{:U('Item/orderset',array('id'=>$val['id']))}" 
+				onclick="return confirm('确认收货？');">确认收货</a>
+				
+				<elseif condition="$val['status'] eq 6"/>
+
+				<a href="{:U('Item/orderdel',array('id'=>$val['id']))}" 
+				onclick="return confirm('确认删除？');">删除</a>
+
+				</if>
+
+				<a href="{:U('Shop/order',array('id'=>$val['id']))}">
+
+				<if condition="$val['status'] eq 1">
+
+				支付
+				<else/>
+
+				查看订单
+
+				</if>
+
+				</a>
+			</li>
+		</ul>
+		</volist>
+	</div>
+</div>
+
+<include file="item:footer"/>	
+</body>
+</html>

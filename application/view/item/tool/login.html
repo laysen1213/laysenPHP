@@ -1,0 +1,39 @@
+<include file="header"/>
+<div class="w_login">
+	<div class="w_car_content">
+		<div class="w_login_to">
+			<div class="w_login_tn">
+				<p class="w_login_p">
+					<a href="javascript:;" class="w_loing_lg w_loing_this">用户登录</a>
+					<a href="{:U('reg')}" class="w_loing_reg">免费注册</a>
+				</p>
+				<form action="{:U('loginData')}" class="w_login_bg" id="formSubmit" data-url="{:U('Member/index')}">
+					<div class="w_login_username w_login_input">
+						<input type="text" name="account" placeholder="用户名">
+					</div>
+					<div class="w_formts_name w_formts"></div>
+					<div class="w_login_pwd w_login_input">
+						<input type="password" name="password" placeholder="密码">
+					</div>
+					<div class="w_formts_pwd w_formts"></div>
+					<div class="w_login_code w_login_input">
+						<input type="text" name="code" placeholder="验证码">
+						<img src="{:U('verify')}" id="code" title="点击我刷新" />
+						<img src="{$p}img/login7.png" title="点击我刷新" class="codeVer">
+					</div>
+					<div class="w_formts_code w_formts"></div>
+					<div class="w_login_check">
+						<label><input type="checkbox" name="chk" >免登录10天</label>
+						<a href="{:U('getBackPwd')}">找回密码</a>
+					</div>
+					<div class="w_login_submit">
+						<input type="submit" value="立即登录">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="footer"/>
+</body>
+</html>

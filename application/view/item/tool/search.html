@@ -1,0 +1,52 @@
+<div class="w_lists_search">
+	<h3 class="w_lists_search_h">礼品筛选</h3>
+	<div class="w_lists_search_dt">
+		<div class="w_lists_search_left">分类：</div>
+		<div class="w_lists_search_right">
+			<a href="{:U('cates',array('cid'=>'','price'=>$r['data']['price']))}" <?php if(empty($r['data']['cid'])){ echo 'class="curr"'; } ?> >不限</a>
+			<volist name="r.data.cate" id="v">
+			<a href="{:U('cates',array('cid'=>$v['id'],'price'=>$r['data']['price']))}" <?php if($r['data']['cid'] == $v['id']){ echo 'class="curr"'; } ?> >{$v['name']}</a>
+			</volist>
+		</div>
+	</div>
+	<div class="w_lists_search_dt">
+		<div class="w_lists_search_left">价格：</div>
+		<div class="w_lists_search_right">
+			<a href="{:U('cates',array('cid'=>$r['data']['cid'],'price'=>''))}" <?php if(empty($r['data']['price'])){ echo 'class="curr"'; } ?> >不限</a>
+
+			<a href="{:U('cates',array('cid'=>$r['data']['cid'],'price'=>'0,99'))}" <?php if($r['data']['price'] == '0,99'){ echo 'class="curr"'; } ?> >100元以下</a>
+
+			<a href="{:U('cates',array('cid'=>$r['data']['cid'],'price'=>'100,299'))}" <?php if($r['data']['price'] == '100,299'){ echo 'class="curr"'; } ?> >100-299元</a>
+
+			<a href="{:U('cates',array('cid'=>$r['data']['cid'],'price'=>'300,599'))}" <?php if($r['data']['price'] == '300,599'){ echo 'class="curr"'; } ?> >300-599元</a>
+
+			<a href="{:U('cates',array('cid'=>$r['data']['cid'],'price'=>'600,999'))}" <?php if($r['data']['price'] == '600,999'){ echo 'class="curr"'; } ?> >600-999元</a>
+
+			<a href="{:U('cates',array('cid'=>$r['data']['cid'],'price'=>'1000,99999999'))}" <?php if($r['data']['price'] == '1000,99999999'){ echo 'class="curr"'; } ?> >1000元以上</a>
+		</div>
+	</div>
+</div>
+
+<!-- 排序 -->
+<div class="w_lists_order">
+	<div class="w_lists_order_one">地区：</div>
+	<div class="w_lists_order_two">江西省南昌市</div>
+	<div class="w_lists_order_one">排序：</div>
+	<div class="w_lists_order_three">
+		<if condition="$see['tar'] eq 'asc' ">
+
+		<a href="{:U('cates',array('tar'=>'desc'))}" class="curr">积分</a>
+
+		<elseif condition="$see['tar'] eq 'desc' "/>
+
+		<a href="{:U('cates',array('tar'=>'asc'))}" class="curr">积分</a>
+
+		<else/>
+
+		<a href="{:U('cates',array('tar'=>'asc'))}" >积分</a>
+
+		</if>
+		<a href="">人气</a>
+		<!-- <a href="">销量</a> -->
+	</div>
+</div>

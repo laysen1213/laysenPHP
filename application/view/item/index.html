@@ -1,0 +1,60 @@
+<include file="header"/>
+<div>
+	<div class="w_top_banner">
+		<ul>
+			<li style="background: url('{$p}img/banner1.jpg?v=1') center;">
+				<a href="/"></a>
+			</li>
+			<li style="background: url('{$p}img/banner2.jpg?v=1') center;">
+			<a href="/"></a></li>
+			<li style="background: url('{$p}img/banner3.jpg?v=1') center;">
+			<a href="/"></a></li>
+			<li style="background: url('{$p}img/banner4.jpg?v=1') center;">
+			<a href="/"></a></li>
+			<li style="background: url('{$p}img/banner5.jpg?v=1') center;">
+			<a href="/"></a></li>
+		</ul>
+		<div class="w_index_btn"></div>
+		<div class="w_index_next w_index_cur" data-pl="1"></div>
+		<div class="w_index_prev w_index_cur" data-pl="-1"></div>
+	</div> 
+
+    <div class="mtime-btn">
+        <a class="prev" href="javascript:;"></a>
+        <a class="next" href="javascript:;"></a>
+        <div class="hd"><ul></ul></div>
+    </div>
+</div>
+<div class="w_mid_item">
+	<!-- 商品列表 -->
+	<div class="w_mid_list">
+		<div class="w_title_list">
+			<img src="{$p}img/title_index1.jpg">
+			<p>
+				<volist name="r.data.cate" id="v">
+				<a href="{:U('cates',array('cid'=>$v['id']))}">{$v.name}</a>
+				</volist>
+			</p>
+		</div>
+		<div class="w_title_ct">
+			<div class="w_title_zlt">
+				<ul>
+					<volist name="r.data.list" id="v">
+					<li>
+						<a href="{:U('detail',array('id'=>$v['id']))}" class="w_title_zlt_img">
+							<img src="{:img($v['cover'])}">
+						</a>
+						<a href="{:U('detail',array('id'=>$v['id']))}" class="w_title_zlt_vz">
+							{$v.goods_name}
+						</a>
+						<div class="w_title_zlt_price">积分：￥{$v.price}</div>
+					</li>
+					</volist>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="footer"/>		
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="{$p}css/style.css?v={:rand(0,99)}">
+</head>
+<body>
+<div class="w_header_top">
+<!-- 头部 -->
+	<div class="w_header_toolbar">
+		<div class="w_header_top_left">欢迎光临,
+			<?php if($user_id==0){ ?>
+			<a href="{:U('Item/login')}"><b>请登录</b></a>&nbsp;
+			<a href="{:U('Item/reg')}">去注册</a>
+			<?php } else { ?>
+			你好，<a href="{:U('Member/index')}">{$user.nickname}</a> !
+			<a href="{:U('Item/logout')}">退出</a>
+			<?php } ?>
+		</div>
+		<div class="w_header_top_right">
+			<a href="{:U('Member/cart')}">购物车：<font>{$cart_total_nums}</font>件</a>
+			<span>|</span>
+			<a href="{:U('myorder')}">我的礼品</a>
+			<span>|</span>
+			<a href="{:U('member/index')}">我的主页</a>
+			<span>|</span>
+			<a href="">帮助中心</a>
+		</div>
+	</div>
+</div>
+
+<div class="w_header_mid">
+	<!-- 搜素框 -->
+	<h2 class="w_header_mid_logo"><!-- <a href=""><img src="img/logo.gif"></a> --></h2>
+	<div class="w_header_search">
+	<form method="get">
+		<div class="w_header_se_left">
+			<div class="w_header_select">礼品</div>
+			<input type="text" name="search"  class="w_header_input" placeholder="搜素"
+			value="{$search}">
+			<div class="clear"></div>
+		</div>
+		<input type="submit" name="" class="w_header_se_right" value="搜索">
+		<div class="clear"></div>
+		<div class="w_header_target">
+			<volist name="hotSearch" id="val">
+			<a href="{:U('Item/content',array('id'=>$val['id']))}">{$val.title|mb_substr=0,7,'utf-8'}</a>
+			</volist>
+		</div>
+	</form>
+	</div>
+</div>
+<div class="w_header_nav">
+	<!-- 导航 -->
+	<div class="w_header_nav_t">
+		<div class="w_header_nav_top">
+			<h3>所有礼品分类</h3>
+			<!-- <ul class="w_header_nav_ul">
+				<li>
+					<div class="nav_hover">
+						<span class="nav_span"></span><a href="{:U('index')}">首页</a>
+					</div>
+					<div class="nav_cate">
+						<div class="nav_cate_h"><a href="">分类</a></div>
+						<div class="nav_cate_p">
+							<a href="">白茶</a>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav_hover">
+						<span class="nav_span"></span><a href="">分类</a>
+					</div>
+					<div class="nav_cate"></div>
+				</li>
+				<div><img src="{$p}img/sy-icon.gif"></div>
+			</ul> -->
+		</div>
+		<!-- 导航 -->
+		<ul class="w_header_nav_list">
+			<li><a href="{:U('Item/index')}">首页</a></li>
+			<li><a href="{:U('Item/cates')}">分类</a></li>
+		</ul>
+	</div>
+</div>

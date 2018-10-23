@@ -1,0 +1,68 @@
+<include file="item:header"/>
+<div class="w_car_nav">
+	<img src="{$p}img/gouwu.jpg">
+</div>
+<div class="w_car_content">
+	<!-- 购物车内容 -->
+	<ul class="w_car_top">
+		<li class="w_car_li_one">
+			<input type="checkbox" checked="checked" class="w_checkall" data-url="{:U('Ajax/find_car')}">
+		</li>
+		<li class="w_car_li_two">礼品图片</li>
+		<li class="w_car_li_three">礼品名称</li>
+		<li class="w_car_li_four">积分</li>
+		<li class="w_car_li_five">数量</li>
+		<li class="w_car_li_six">小计(积分)</li>
+		<li class="w_car_li_seven">操作</li>
+	</ul>
+	<volist name="r.data.list" id="v">
+	<ul class="w_car_mid">
+		<li class="w_car_li_one">
+			<input type="checkbox" checked="checked" class="w_car_check" value="{$v.id}">
+		</li>
+		<li class="w_car_li_two">
+			<a href="{:U('Item/detail',array('id'=>$v['goods_id']))}">
+				<img src="{:img($v['cover'])}">
+			</a>
+		</li>
+		<li class="w_car_li_three">
+			<a href="{:U('Item/detail',array('id'=>$v['goods_id']))}">{$v['goods_name']}</a>
+		</li>
+		<li class="w_car_li_four" data-price="{$v['price']}">{$v['price']}</li>
+		<li class="w_car_li_five">
+			<div class="car_click" data-size="-1">
+				<img src="{$p}img/jian.jpg">
+			</div>
+			<input type="text" maxlength="4" value="{$v['nums']}" data-goods-id="{$v.goods_id}" data-url="{:U('cartSet')}" class="w_car_nums">
+			<div class="car_click" data-size="1">
+				<img src="{$p}img/jia.jpg">
+			</div>
+		</li>
+		<li class="w_car_li_six">{$v['price']*$v['nums']}</li>
+		<li class="w_car_li_seven">
+			<a href="javascript:;" class="car_del" data-id="{$v['id']}" data-url="{:U('cartDel')}">删除</a>
+		</li>
+	</ul>
+	</volist>
+	
+	<?php if($r['data']['list']){ ?>
+	<ul class="w_car_bot">
+		<li class="w_car_bot_three w_del_nums">已选礼品<font></font>件</li>
+		<li class="w_car_bot_three w_del_price">积分<font></font></li>
+		<li class="w_car_bot_four">
+			<a href="{:U('Item/index')}" class="w_car_bot_gg">继续逛逛</a>
+			<input type="submit" value="结算" class="w_car_bot_js" data-url="{:U('cartSbt')}" data-href="{:U('confirm',array('id'=>'underfine'))}">
+		</li>
+	</ul>
+	<?php }else{ ?>
+	<div class="w_car_bot_four w_car_bot_nof">
+		<img src="{$p}img/shopcar.png">
+		<a href="{:U('Item/index')}" class="w_car_bot_gg">继续逛逛</a>
+	</div>
+	<?php } ?>
+</div>
+
+<include file="item:footer"/>	
+<script type="text/javascript" src="{$p}js/cart.js?=v{:rand(0,99)}"></script>
+</body>
+</html>

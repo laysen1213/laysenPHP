@@ -1,0 +1,42 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<div class="w_screen">
+			<a href="{:U('wallet')}" 
+			<if condition="$status eq ''">class="w_active"</if>>全部</a>
+			<a href="{:U('wallet',array('status'=>1))}" 
+			<if condition="$status eq 1">class="w_active"</if>>收入</a>
+			<a href="{:U('wallet',array('status'=>2))}" 
+			<if condition="$status eq 2">class="w_active"</if>>支出</a>
+		</div>
+		<table cellspacing="0" cellpadding="0" class="w_user_table">
+			<tr class="w_user_table_top">
+				<th>积分</th>
+				<th>收入/支出</th>
+				<th>时间</th>
+				<th>备注</th>
+			</tr>
+			<volist name="list" id="val">
+			<tr>
+				<td>{$val['balance']}</td>
+				<td>
+					<if condition="$val['status'] eq 1">
+					<span style="color: #09c762;font-size: 15px;font-weight: bold;">+{$val['money']}</span>
+					<else/>
+					<span style="color: red;font-size: 15px;font-weight: bold;">-{$val['money']}</span>
+					</if>
+				</td>
+				<td>{$val['status']|LogStatus=###}</td>
+				<td>{$val['addtime']|date='Y-m-d',###}</td>
+				<td>{$val['type']}</td>
+			</tr>
+			</volist>				
+		</table>		
+	</div>
+</div>
+
+<include file="item:footer"/>	
+</body>
+</html>

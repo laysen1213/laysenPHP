@@ -1,0 +1,244 @@
+	<include file="header"/>
+	<div class="w_location">
+		<!-- 位置导航 -->
+		<a href="">首页</a>
+		<span>&gt;</span>
+		<a href="">零食饮料</a>
+		<span>&gt;</span>
+		<a href="">麦片谷物</a>
+	</div>
+	
+	<div class="w_content">
+		<!-- 放大 -->
+		<div class="da-zuo w_content_left">
+  <div class="preview">
+
+  <div id="vertical" class="bigImg">
+    <img src="{:img($r['data']['info']['cover'])}" width="400" height="400" alt="" id="midimg" />
+    <div style="display:none;" id="winSelector"></div>
+  </div><!--bigImg end-->
+  
+  <div class="smallImg">
+   
+    <div id="imageMenu">
+      <ul>
+        <li id="onlickImg">
+        <img src="{:img($r['data']['info']['cover'])}" width="68" height="68" /></li>
+        <!-- <li>
+        <img src="{$p}img/b2.jpg" width="68" height="68" /></li>
+        <li>
+        <img src="{$p}img/b3.jpg" width="68" height="68" /></li> -->
+      </ul>
+    </div>
+
+  </div><!--smallImg end-->
+  <div id="bigView" style="display:none;"><img width="800" height="800" alt="" src="" /></div>
+	</div>
+	</div> 
+	
+	<div class="w_content_mid">
+		<!-- 商品详细 -->
+		<h2 class="w_content_mid_title">{$r.data.info.goods_name}</h2>
+		<p class="w_content_mid_p"><!-- 预售时间：从2015年12月1日00:00:00开始到12月11日24:00:00结束。 发货时间：2015年12月12日至2015年12月17日 -->
+		</p>
+		<ul class="w_content_mid_ul">
+			<li>
+				<span>积分：</span>
+				<div class="w_content_cx">¥{$r.data.info.price}</div>
+			</li>
+			<li class="w_content_mid_li">
+				<span>地区：</span>
+				<div class="w_content_dz">请选择地址</div>
+			</li>
+		</ul>
+		<form action="{:U('Shop/addShopcar')}" method="post"> 
+		<div class="w_content_mid_nums">
+			<p data-size="-1"><img src="{$p}img/jian.jpg"></p>
+			<input type="text" name="nums" onkeyup="this.value=this.value.replace(/\D/g,'1')" value="1" class="w_content_nums">
+			<p data-size="1"><img src="{$p}img/jia.jpg"></p>
+			<span>声音({$r.data.info.inventory|default=0})</span>
+			<span>数量：{$r.data.info.hassold|default=0}</span>
+			<?php if($uid){ ?>
+			<if condition="$attendRes['status'] eq 1">
+				<div class="w_content_attend w_content_attd" data-id="{$id}" data-url="{:U('Ajax/attend')}">已关注</div>
+			<else/>
+				<div class="w_content_attend" data-id="{$id}" data-url="{:U('Ajax/attend')}">未关注</div>
+			</if>
+			<?php } ?>
+		</div>
+		<div class="w_content_mid_btn">
+			<input type="button" class="w_content_mid_gm" value="立即购买">
+			<input type="button" class="w_content_mid_gwc" value="加入购物车" data-goods-id="{$r.data.info.id}" data-url="{:U('Member/cartSet')}">
+			<input type="hidden" name="id" value="{$id}">
+			<input type="hidden" name="price" value="{$res['price']}">
+		</div>
+		</form>
+		<div class="w_content_mid_info">
+			<h4>礼品简介：</h4>
+			{$r.data.info.intro}
+		</div>
+	</div>
+
+	<div class="w_content_right">
+		<h3 class="w_content_h3">礼品</h3>
+		<ul class="w_content_right_rx">
+		<volist name="hotList" id="val">
+			<li>
+				<a href="{:U('content',array('id'=>$val['id']))}">
+					<img src="/uploads{$val['img']}">
+					<div class="w_content_right_t">
+						<span>{$val['title']}</span>
+						<font>￥{$val['price']}</font>
+					</div>
+				</a>
+			</li>
+		</volist>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<!-- 相关分类 -->
+	<div class="w_content_com_left">
+		<div class="w_content_fl">
+			<h3 class="w_content_h3">相关分类</h3>
+			<ul class="w_content_fl_ul">
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+				<li><a href=""></a></li>
+			</ul>
+		</div>
+		<div class="w_content_fl">
+			<h3 class="w_content_h3">礼品</h3>
+			<ul class="w_content_right_rx">
+			<volist name="recList" id="val">
+				<li>
+					<a href="{:U('content',array('id'=>$val['id']))}">
+						<img src="/uploads{$val['img']}">
+						<div class="w_content_right_t">
+							<span>{$val['title']}</span>
+							<font>￥{$val['price']}</font>
+						</div>
+					</a>
+				</li>
+			</volist>		
+			</ul>
+		</div>
+	</div>
+
+	<!-- 商品评论 -->
+	<div class="w_content_com_right">
+		<div class="w_content_comright_top">
+			<a href="javascript:;" class="w_content_curr">礼品详情</a>
+			<a href="javascript:;">累计评论（{$commentCount|default=0}）</a>
+			<a href="javascript:;">记录（0）</a>
+		</div>
+		<!-- tab -->
+		<div class="w_content_comright_btn">
+			<!-- 详细 -->
+			<div class="w_content_vz">
+				<p class="w_content_pdattr">规格参数</p>
+				<ul class="w_content_pdul">
+					<li>国家: 中国</li>
+					<li>国家: 中国</li>
+					<li>国家: 中国</li>
+					<li>国家: 中国</li>
+					<li>国家: 中国</li>
+					<li>国家: 中国</li>
+					<li>国家: 中国</li>
+					<li>国家: 中国</li>
+					<li>国家: 中国</li>
+				</ul>
+				<div class="w_content_info">
+					{:html($r['data']['info']['content'])}
+				</div>
+			</div>
+			<!-- 评论 -->
+			<div class="w_content_vz" style="display: none;">
+				<include file="comment"/>
+				<!-- 我要评论 -->
+				<div class="w_content_inquery">
+					<div class="w_content_inquery_top"><h3>我要评论</h3></div>
+					<form action="{:U('item/comment')}" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="jid" value="{$id}">
+					<input type="hidden" name="oid" value="{$oid}">
+					<div class="w_content_inquery_mid">
+						<div class="w_content_pflt">
+							<span>好评度：</span>
+							<div class="w_content_label">
+								<label><input type="radio" value="1" name="type" checked="chceked">好评</label>
+								<label><input type="radio" value="2" name="type">中评</label>
+								<label><input type="radio" value="3" name="type">差评</label>
+							</div>
+						</div>
+					</div>
+					<div class="w_content_inquery_mid">
+						<div class="w_content_pflt">
+							<span>评分：</span>
+							<div class="w_content_label">
+								<label><input type="radio" name="degress" value="5" checked="chceked">
+								<img src="{$p}img/duox5.jpg"></label>
+								<label><input type="radio" name="degress" value="4" >
+								<img src="{$p}img/duox4.jpg"></label>
+								<label><input type="radio" name="degress" value="3" >
+								<img src="{$p}img/duox3.jpg"></label>
+								<label><input type="radio" name="degress" value="2" >
+								<img src="{$p}img/duox2.jpg"></label>
+								<label><input type="radio" name="degress" value="1" >
+								<img src="{$p}img/duox1.jpg"></label>
+							</div>
+						</div>
+					</div>
+					<div class="w_content_inquery_mid">
+						<div class="w_content_pflt">
+							<span>上传图片：</span>
+							<div class="w_content_label">
+								<input type="file" name="img">
+							</div>
+						</div>
+					</div>
+					<div class="w_content_inquery_mid">
+						<div class="w_content_pflt">
+							<span>内容：</span>
+							<div class="w_content_label">
+								<textarea name="info"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="w_content_inquery_mid">
+						<div class="w_content_pflt">
+							<span style="height: 22px"></span>
+							<div class="w_content_label">
+								<input type="submit" value="提交" id="comment_submit">
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="w_content_vz" style="display: none;">
+				记录
+			</div>
+		</div>
+	</div>
+</div>
+<include file="footer"/>
+<script type="text/javascript" src="{$p}js/woxie.js"></script>
+<script type="text/javascript" src="{$p}js/cart.js"></script>
+<script type="text/javascript">
+	window.onscroll = function(){
+		var scrollt = document.documentElement.scrollTop + document.body.scrollTop;
+		if( scrollt > 740){ 
+			$(".w_content_comright_top").addClass("scroll_height");
+		}else{
+			$(".w_content_comright_top").removeClass("scroll_height");
+		}
+	}
+</script>
+</body>
+</html>

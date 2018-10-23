@@ -1,0 +1,116 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+
+		<ul class="w_address">
+			<volist name="list" id="val">
+			<li <if condition="$val['status'] eq 1">class="w_address_toli"</if> >
+				<span class="w_address_close">X</span>
+				<span class="w_address_edit">
+					<a href="">设为默认</a>
+					<a href="">编辑</a>
+				</span>
+				<if condition="$val['status'] eq 1">
+					<h3 class="w_address_st">默认地址</h3>
+				</if>
+				<div class="w_address_info">
+					<div class="w_address_ifleft">地址标注：</div>
+					<div class="w_address_ifright">{$val['label']}</div>
+				</div>
+				<div class="w_address_info">
+					<div class="w_address_ifleft">收货人姓名：</div>
+					<div class="w_address_ifright">{$val['name']}</div>
+				</div>
+				<div class="w_address_info">
+					<div class="w_address_ifleft">收货地址：</div>
+					<div class="w_address_ifright">{$val['address']}</div>
+				</div>
+				<div class="w_address_info">
+					<div class="w_address_ifleft">联系电话：</div>
+					<div class="w_address_ifright">{$val['phone']}</div>
+				</div>
+			</li>
+			</volist>
+		</ul>
+		<!-- 收货地址设置 -->
+		<table cellspacing="0" cellpadding="0" class="w_user_table">
+			<tr class="w_user_table_top">
+				<th>地址标注</th>
+				<th>收货人</th>		
+				<th>收货地址</th>
+				<th>联系电话</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+			<volist name="list" id="val">
+			<tr>
+				<td>{$val['label']}</td>
+				<td>{$val['name']}</td>
+				<td>{$val['address']}</td>
+				<td>{$val['phone']}</td>
+				<td>
+					<if condition="$val['status'] eq 1">默认地址
+					<else/>
+					<a href="{:U('status_address',array('id'=>$val['id']))}">设为默认</a>
+					</if>
+				</td>
+				<td>
+					<a href="{:U('update_address',array('id'=>$val['id']))}">修改</a>
+					<if condition="$val['status'] neq 1">
+					<a href="{:U('del_address',array('id'=>$val['id']))}">删除</a>
+					</if>
+				</td>
+			</tr>
+			</volist>
+		</table>
+		<div class="height"></div>
+		<table cellspacing="0" cellpadding="0" class="w_form_table">
+		<form action="{:U('address')}" method="post">
+			<tr>
+				<td>地址标注：</td>
+				<td>
+					<input type="text" name="label">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>收货人：</td>
+				<td>
+					<input type="text" name="name">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>电话：</td>
+				<td>
+					<input type="text" name="phone">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr>
+				<td>城市选择：</td>
+				<td>
+				<select><option value="">请选择</option></select>
+				</td>
+			</tr>
+			<tr>
+				<td>收货地址：</td>
+				<td class="w_user_table_long">
+					<input type="text" name="address">
+					<font color="red">*</font>
+				</td>
+			</tr>
+			<tr class="w_user_table_submit">
+				<td></td>
+				<td colspan="2"><input type="submit" value="提交"></td>
+			</tr>
+		</form>			
+		</table>
+	</div>
+</div>
+
+<include file="item:footer"/>	
+</body>
+</html>

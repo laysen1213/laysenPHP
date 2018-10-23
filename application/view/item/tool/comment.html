@@ -1,0 +1,126 @@
+<ul class="w_content_cerent">
+	<li>
+		<span>好评：</span>
+		<div class="w_content_pb">
+			<div class="w_content_wp" style="width: {$pariseCount/$commentCount*100}%"></div>
+		</div>
+		<span>{$pariseCount/$commentCount*100}%</span>
+	</li>
+	<li>
+		<span>中评：</span>
+		<div class="w_content_pb">
+			<div class="w_content_wp" style="width: {$mediumCount/$commentCount*100}%"></div>
+		</div>
+		<span>{$mediumCount/$commentCount*100}%</span>
+	</li>
+	<li>
+		<span>差评：</span>
+		<div class="w_content_pb">
+			<div class="w_content_wp" style="width: {$badCount/$commentCount*100}%"></div>
+		</div>
+		<span>{$badCount/$commentCount*100}%</span>
+	</li>
+</ul>
+<div class="w_content_tab_box">
+	<a href="javascript:;" class="curr">全部评论({$commentCount})<i>◆</i></a>
+	<a href="javascript:;">好评({$pariseCount})<i>◆</i></a>
+	<a href="javascript:;">中评({$mediumCount})<i>◆</i></a>
+	<a href="javascript:;">差评({$badCount})<i>◆</i></a>
+</div>
+
+<div class="w_content_tab_con">
+	<!-- 全部评论 -->
+	<div class="w_content_kv">
+		<!-- 头像 -->
+		<volist name="listComment" id="val" empty="$empty">
+		<div class="w_content_tab_face">
+			<img src="/uploads{$val['face']}">
+		</div>
+		<div class="w_content_tab_lc">
+			<h4>{$val['name']}</h4>
+			<div class="w_content_tab_cmnr">
+				{$val['info']}
+				<notempty name="$val['img']">
+				<img src="/uploads{$val['img']}" width="20">	
+				</notempty>
+			</div>
+			<div class="w_content_tab_ft">
+				<img src="__PUBLIC__/home/img/duox{$val['degress']}.jpg">
+				<font>{$val['addtime']|date='Y-m-d',###}</font>
+			</div>
+		</div>
+		<div class="clear"></div>
+		</volist>
+	</div>
+
+	<!-- 好评 -->
+	<div class="w_content_kv" style="display: none;">
+		<!-- 头像 -->
+		<volist name="listparise" id="val" empty="$empty">
+		<div class="w_content_tab_face">
+			<img src="/uploads{$val['face']}">
+		</div>
+		<div class="w_content_tab_lc">
+			<h4>{$val['name']}</h4>
+			<div class="w_content_tab_cmnr">
+				{$val['info']}
+				<notempty name="$val['img']">
+				<img src="/uploads{$val['img']}" width="20">
+				</notempty>	
+			</div>
+			<div class="w_content_tab_ft">
+				<img src="__PUBLIC__/home/img/duox{$val['degress']}.jpg">
+				<font>{$val['addtime']|date='Y-m-d',###}</font>
+			</div>
+		</div>
+		<div class="clear"></div>
+		</volist>
+	</div>
+	<!-- 中评 -->
+	<div class="w_content_kv" style="display: none;">
+		<!-- 头像 -->
+		<volist name="listmedium" id="val" empty="$empty">
+		<div class="w_content_tab_face">
+			<img src="/uploads{$val['face']}">
+		</div>
+		<div class="w_content_tab_lc">
+			<h4>{$val['name']}</h4>
+			<div class="w_content_tab_cmnr">
+				{$val['info']}
+				<notempty name="$val['img']">
+				<img src="/uploads{$val['img']}" width="20">	
+				</notempty>
+			</div>
+			<div class="w_content_tab_ft">
+				<img src="__PUBLIC__/home/img/duox{$val['degress']}.jpg">
+				<font>{$val['addtime']|date='Y-m-d',###}</font>
+			</div>
+		</div>
+		<div class="clear"></div>
+		</volist>
+	</div>
+
+	<!-- 差评 -->
+	<div class="w_content_kv" style="display: none;">
+		<!-- 头像 -->
+		<volist name="listbad" id="val" empty="$empty">
+		<div class="w_content_tab_face">
+			<img src="/uploads{$val['face']}">
+		</div>
+		<div class="w_content_tab_lc">
+			<h4>{$val['name']}</h4>
+			<div class="w_content_tab_cmnr">
+				{$val['info']}
+				<notempty name="$val['img']">
+				<img src="/uploads{$val['img']}" width="20">	
+				</notempty>
+			</div>
+			<div class="w_content_tab_ft">
+				<img src="__PUBLIC__/home/img/duox{$val['degress']}.jpg">
+				<font>{$val['addtime']|date='Y-m-d',###}</font>
+			</div>
+		</div>
+		<div class="clear"></div>
+		</volist>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+<include file="header"/>
+<div class="w_location">
+	<!-- 位置导航 -->
+	<a href="">首页</a>
+	<span>&gt;</span>
+	<a href="">零食饮料</a>
+	<span>&gt;</span>
+	<a href="">麦片谷物</a>
+</div>
+<div class="w_lists">
+	<!-- 列表 -->
+	<div class="w_lists_left">
+		<div class="w_lists_left_side">
+			<h3>礼品</h3>
+			<volist name="hotList" id="val">
+			<div class="w_lists_left_rx">
+				<a href="{:U('content',array('id'=>$val['id']))}">
+				<div class="w_lists_left_pic">			
+					<img src="/uploads{$val['img']}" width="120">	
+				</div>
+				<div class="w_lists_left_price">￥{$val['price']}</div>
+				<div class="w_lists_left_name">{$val['title']}</div>
+				</a>
+			</div>
+			</volist>
+		</div>
+	</div>
+
+	<div class="w_lists_right">
+		<!-- 筛选条件 -->
+		<include file="search"/>		
+		<!-- 列表 -->
+		<div class="w_lists_item">
+			<ul>
+				<volist name="r.data.list" id="v">
+				<li>
+					<div class="w_lists_item_pic">
+						<a href="{:U('detail',array('id'=>$v['id']))}">
+							<img src="{:img($v['cover'])}">
+						</a>
+					</div>
+					<div class="w_lists_item_name">
+						<a href="{:U('detail',array('id'=>$v['id']))}">
+						{$v.goods_name}</a>
+					</div>
+					<div class="w_lists_item_price">￥{$v['price']}</div>
+				</li>	
+				</volist>	
+			</ul>
+			<div id="page">{$page}</div>
+		</div>
+	</div>
+</div>
+<include file="footer"/>
+</body>
+</html>

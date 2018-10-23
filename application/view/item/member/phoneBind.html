@@ -1,0 +1,25 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<!-- 收货地址设置 -->
+		<table cellspacing="0" cellpadding="0" class="w_form_table">
+		<form action="{:U('phoneBind')}" method="post">
+			<tr>
+				<td>手机号：</td>
+				<td><input type="text" value="{$rs['phone']}" name="phone"></td>
+			</tr>
+			
+			<tr class="w_user_table_submit">
+				<td></td>
+				<td colspan="2"><input type="submit" value="提交"></td>
+			</tr>
+		</form>			
+		</table>
+	</div>
+</div>
+
+<include file="item:footer"/>	
+</body>
+</html>

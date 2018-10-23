@@ -1,0 +1,49 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<div class="w_user_right_data">
+			<!-- 头像 -->
+			<div class="w_user_right_face">
+				<img src="/uploads/{$rs.face}">
+			</div>
+			<!-- 用户详细 -->
+			<div class="w_user_right_username">
+				<p>你好,{$rs.name}&nbsp;&nbsp;
+					<empty name="sign">
+					<a href="javascript:;" class="w_user_sign" data-url="{:U('Ajax/sign')}">签到</a>
+					<else/>
+					<a href="javascript:;">今日已签到</span>
+					</empty>
+				</p>
+				<p>每日签到能获取20点积分</p>
+				<p>当前等级：LV1</p>
+				<p>
+					<span>资料完整度：</span>
+					<span class="w_user_oninfo"><i style="width: 30%">30%</i></span>
+					<span><a href="" class="w_user_wsz">立即完善</a></span>
+				</p>
+				<p>账户安全级别：低
+					<a href=""><img src="{$p}img/s-phone-icon.png"></a>
+					<a href=""><img src="{$p}img/s-psw-icon.png"></a>
+					<a href="" class="w_user_tsz">立即提升</a>
+				</p>
+			</div>
+			<!-- 余额 -->
+			<div class="w_user_right_askl">
+				<h3>当前余额</h3>
+				<p>￥{$rs.money}</p>
+			</div>
+			<!-- 积分 -->
+			<div class="w_user_right_askl">
+				<h3>当前积分</h3>
+				<p>{$rs.integral}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<include file="item:footer"/>	
+</body>
+</html>

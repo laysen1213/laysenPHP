@@ -1,0 +1,37 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<!-- 收货地址设置 -->
+		<table cellspacing="0" cellpadding="0" class="w_user_table">
+			<tr class="w_user_table_top">
+				<th>礼品图片</th>
+				<th>礼品名称</th>
+				<th>关注时间</th>		
+				<th>操作</th>
+			</tr>
+			<volist name="list" id="val">
+			<tr>
+				<td>
+					<a href="{:U('Item/content',array('id'=>$val['cid']))}">
+						<img src="/uploads{$val['img']}" width="70">
+					</a>
+				</td>
+				<td>
+					<a href="{:U('Item/content',array('id'=>$val['cid']))}">{$val['title']}
+					</a>
+				</td>
+				<td>{$val['addtime']|date='Y-m-d',###}</td>
+				<td>
+					<a href="{:U('attend',array('id'=>$val['id']))}">取消关注</a>
+				</td>
+			</tr>
+			</volist>
+		</table>
+	</div>
+</div>
+
+<include file="item:footer"/>	
+</body>
+</html>

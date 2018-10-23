@@ -1,0 +1,48 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<!-- 收货地址设置 -->
+		<table cellspacing="0" cellpadding="0" class="w_form_table">
+		<form action="{:U('info')}" method="post" enctype="multipart/form-data">
+			
+			<tr>
+				<td>用户名：</td>
+				<td><input type="text" value="{$rs['name']}" name="name"></td>
+			</tr>
+			<tr>
+				<td>上传头像：</td>
+				<td><input type="file" name="face"></td>
+			</tr>
+			<tr>
+				<td>性别：</td>
+				<td>
+					<input type="radio" name="sex" checked="checked">男
+					<input type="radio" name="sex" >女
+				</td>
+			</tr>
+
+			<tr>
+				<td>电话：</td>
+				<td><input type="text" ></td>
+			</tr>
+			<tr>
+				<td>生日：</td>
+				<td><input type="date" value="" name="birthday"></td>
+			</tr>
+			<tr>
+				<td>邮箱：</td>
+				<td class="w_user_table_long"><input type="text"></td>
+			</tr>
+			<tr class="w_user_table_submit">
+				<td></td>
+				<td colspan="2"><input type="submit" value="提交"></td>
+			</tr>
+		</form>			
+		</table>
+	</div>
+</div>
+<include file="item:footer"/>	
+</body>
+</html>

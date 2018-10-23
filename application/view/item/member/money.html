@@ -1,0 +1,22 @@
+<include file="item:header"/>
+<div class="w_user">
+	<!-- 会员中心 -->
+	<include file="item:left"/>
+	<div class="w_user_right">
+		<form action="{:U('member/money')}" method="post" >
+			<table cellspacing="0" cellpadding="0" class="w_form_table">
+				<tr>
+					<td>积分：</td>
+					<td><input type="text" name="money"></td>
+				</tr>
+				<tr class="w_user_table_submit">
+					<td></td>
+					<td><input type="submit" value="提交"></td>
+				</tr>
+			</table>
+		</form>		
+	</div>
+</div>
+<include file="item:footer"/>	
+</body>
+</html>
