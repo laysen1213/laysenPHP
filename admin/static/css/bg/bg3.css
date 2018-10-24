@@ -1,0 +1,16 @@
+.c_slider{background: #14920d;}
+.c_slider_nav a{color: #fff;}
+.c_slider_nav a:hover{background: #1a6907;}
+.c_slider_nav a.on{color: #fff;background: #1a6907;}
+.c_ft a{background: #23a204; border-top: 1px solid #0a6b90;}
+.c_ft a:hover{background: #077515;}
+.c_right_top a.on{border-bottom: 2px solid #16880f; color: #06861d;}
+.c_right_top a:hover{color: #06861d;}
+.c_secnd_nav a.on{color: #06861d;}
+.c_secnd_nav a:hover{color: #06861d;}
+.ui-pagination ul>.active a:hover, .ui-pagination ul>.active>a, .ui-pagination ul>.active>span{
+	background-color: #257b0e;
+}
+.pageLocation{background: #257b0e;}
+.submit_btn{background: #069032;}
+.submit_btn:hover{background: #09922d;}

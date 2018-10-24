@@ -1,0 +1,7 @@
+.admin_color .admin_color_1{background-position: -14px 0;}
+.nav{background: #3a6ea5 url(../../image/bgColor1.gif) repeat-x right bottom;}
+.menu li:hover, .menu li.this{background: #045094;}
+.leftmenu li a:hover, .leftmenu li.this a{border-left: 4px solid #045094;}
+.pages a:hover,.pages a.this,.pages #page_href,.submit_btn{background-color: #3a6ea5 ;}
+.submit_btn{border-color: #3a6ea5 ;}
+.submit_btn:hover,.pages #page_href:hover,.pages a.this:hover{background: #045094;}

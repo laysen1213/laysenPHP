@@ -1,0 +1,17 @@
+.c_slider{background: #ec3e3e;}
+.c_slider_nav a{color: #fff;}
+.c_slider_nav a:hover{background: #af0b20;}
+.c_slider_nav a.on{color: #fff;background: #af0b20;}
+.c_ft a{background: #bf2c13; border-top: 1px solid #a20b2d;}
+.c_ft a:hover{background: #9a1f0a;}
+.c_right_top a.on{border-bottom: 2px solid #ca370a; color: #ca370a;}
+.c_right_top a:hover{color: #ca370a;}
+.c_secnd_nav a.on{color: #ca370a;}
+.c_secnd_nav a:hover{color: #ca370a;}
+.ui-pagination ul>.active a:hover, .ui-pagination ul>.active>a, .ui-pagination ul>.active>span{
+	background-color: #ca370a;
+}
+.pageLocation{background: #ca370a;}
+.submit_btn{background: #c53609;}
+.submit_btn:hover{background: #7b2408;}
+.admin_tab a.on{color: #ca370a;}

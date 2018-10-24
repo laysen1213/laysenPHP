@@ -1,0 +1,15 @@
+.c_slider{background: #6ab7ef;}
+.c_slider_nav a{color: #fff;}
+.c_slider_nav a:hover{background: #22a2d2;}
+.c_slider_nav a.on{color: #fff;background: #22a2d2;}
+.c_ft a{background: #2fa4d0; border-top: 1px solid #0a6b90;}
+.c_ft a:hover{background: #0789b9;}
+.c_right_top a.on{border-bottom: 2px solid rgb(0, 153, 252); color: rgb(0, 153, 252);}
+.c_secnd_nav a.on{color: #3283FA;}
+.ui-pagination ul>.active a:hover, .ui-pagination ul>.active>a, .ui-pagination ul>.active>span{
+	background-color: #3486c1;
+}
+.pageLocation{background: #3486c1;}
+.submit_btn{background: #318dd0;}
+.submit_btn:hover{background: #3486c1;}
+.admin_tab a.on{color: #318dd0;}
