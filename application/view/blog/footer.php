@@ -1,7 +1,8 @@
 <div class="dean">
 	<h5>友情链接</h5>
 	<div class="deanlink">
-		<a href="http://www.webvann.cn/" target="_blank">vann</a>
+		<!-- <a href="http://www.webvann.cn/" target="_blank">vann</a> -->
+		<a href="https://nodeedge.com/" target="_blank">节点边缘</a>
 		<a href="https://zoco.me/" target="_blank">zoco</a>
 		<a href="https://alien.ren/" target="_blank">alien</a>
 		<a href="https://dxxing.com/" target="_blank">dxxing</a>
